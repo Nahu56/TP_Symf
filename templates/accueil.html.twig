@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class="row">
+
+    <div class="col m-2">
+        <table class="table">
+            <h4>Produits récents</h4>
+
+            <thead>
+                <th>Nom</th>
+                <th>Prix</th>
+            </thead>
+            <tbody>
+            {% for prod in prodRecents %}
+                <tr>
+                    <td><a href="{{ path('product.show', {id : prod.id}) }}">{{ prod.name }}</a></td>
+                    <td><a href="{{ path('product.show', {id : prod.id}) }}">{{ prod.price }} €</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col m-2">
+        <table class="table">
+            <h4>Produits les moins chers</h4>
+
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prod in prodCheap %}
+                    <tr>
+                        <td><a href="{{ path('product.show', {id : prod.id}) }}">{{ prod.name }}</a></td>
+                        <td><a href="{{ path('product.show', {id : prod.id}) }}">{{ prod.price }} €</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

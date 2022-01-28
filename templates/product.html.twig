@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page produits{% endblock %}
+
+{% block body %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Prix</th>
+            <th>Description</th>
+            <th>Date de création</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>{{products.name}}</td>
+                <td>{{products.price}} €</td>
+                <td>{{products.description}}</td>
+
+                <td>{{products.createdAt|date('d-m-Y')}}</td>
+            </tr>
+    </tbody>
+</table>
+
+
+<button class="btn btn-primary" type="button" id="button" onclick="addCart()" >Ajout au panier</button>
+
+
+<script>
+
+    function addCart(){
+
+        console.log({{products.id}})
+
+        fetch("{{ path('ajoutPanier', {id : products.id}) }}")
+            .then(data =>{
+                document.getElementById('button').disabled = true;
+
+                console.log("toto");
+            })
+    }
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block body %}
+
+<h1> Commandes </h1>
+
+</br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Utilisateur</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td><a href="{{ path('commande', {id : commande.id}) }}">{{ commande.id }}</a></td>
+                <td><a href="{{ path('commande', {id : commande.id}) }}">{{ commande.email }}</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
